@@ -16,6 +16,8 @@
 		19F2836A1FE1D8D20056BF88 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19F283681FE1D8D20056BF88 /* TodayViewController.xib */; };
 		19F2836E1FE1D8D20056BF88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19F2836C1FE1D8D20056BF88 /* InfoPlist.strings */; };
 		19F283721FE1D8D20056BF88 /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 19F283611FE1D8D20056BF88 /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		19F283791FE1D96B0056BF88 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F283771FE1D96B0056BF88 /* SwiftyJSON.framework */; };
+		19F2837A1FE1D96B0056BF88 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F283781FE1D96B0056BF88 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		19F2836B1FE1D8D20056BF88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19F2836D1FE1D8D20056BF88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		19F2836F1FE1D8D20056BF88 /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
+		19F283771FE1D96B0056BF88 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
+		19F283781FE1D96B0056BF88 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F283791FE1D96B0056BF88 /* SwiftyJSON.framework in Frameworks */,
+				19F2837A1FE1D96B0056BF88 /* Alamofire.framework in Frameworks */,
 				19F283641FE1D8D20056BF88 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +119,8 @@
 		19F283621FE1D8D20056BF88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19F283781FE1D96B0056BF88 /* Alamofire.framework */,
+				19F283771FE1D96B0056BF88 /* SwiftyJSON.framework */,
 				19F283631FE1D8D20056BF88 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -159,6 +167,7 @@
 				19F2835D1FE1D8D20056BF88 /* Sources */,
 				19F2835E1FE1D8D20056BF88 /* Frameworks */,
 				19F2835F1FE1D8D20056BF88 /* Resources */,
+				19F2837B1FE1D9820056BF88 /* [Carthage] Run Script */,
 			);
 			buildRules = (
 			);
@@ -228,6 +237,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19F2837B1FE1D9820056BF88 /* [Carthage] Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/SwiftyJSON.framework",
+			);
+			name = "[Carthage] Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		19F283461FE1D6E90056BF88 /* Sources */ = {
@@ -429,6 +457,10 @@
 				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "info.isaoeka.WidgetSample-OSX.TodayExtension";
@@ -444,6 +476,10 @@
 				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "info.isaoeka.WidgetSample-OSX.TodayExtension";

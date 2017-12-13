@@ -1,4 +1,4 @@
 # WidgetSample-OSX
 
 ## install
-carthage update
+carthage update --platform Mac
